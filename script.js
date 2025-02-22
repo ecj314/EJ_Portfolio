@@ -64,98 +64,60 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const canvas = document.getElementById("wordCloudCanvas");
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = 400;  // Ensure the canvas matches container size
-    canvas.height = 300;
-
     const words = [
-        { text: "Gen AI", size: 18 },
-        { text: "Blockchain", size: 19 },
-        { text: "IoT", size: 20 },
-        { text: "NLP", size: 15 },
-        { text: "Machine Learning", size: 22},
-        { text: "Automation", size: 24 },
-        { text: "Python", size: 24 },
-        { text: "SQL", size: 16 },
-        { text: "Power BI", size: 27 },
-        { text: "GCP", size: 24 },
+        { text: "Gen AI", size: 40 },
+        { text: "Blockchain", size: 35 },
+        { text: "IoT", size: 30 },
+        { text: "NLP", size: 25 },
+        { text: "Machine Learning", size: 45 },
+        { text: "Automation", size: 38 },
+        { text: "Python", size: 32 },
+        { text: "SQL", size: 28 },
+        { text: "Power BI", size: 42 },
+        { text: "GCP", size: 36 }
     ];
 
-    let index = 0;
-    let placedWords = [];
+    const width = 400, height = 300;
 
-    function getGradientColor(index, totalWords) {
-        const darkBrown = [136, 117, 97];  // RGB for #887561
-        const lightBrown = [183, 172, 160];  // RGB for #b7aca0
+    const colorScale = d3.scaleLinear()
+        .domain([0, words.length - 1])
+        .range(["#887561", "#b7aca0"]); // Gradient from dark to light brown
 
-        let r = darkBrown[0] + ((lightBrown[0] - darkBrown[0]) * index / totalWords);
-        let g = darkBrown[1] + ((lightBrown[1] - darkBrown[1]) * index / totalWords);
-        let b = darkBrown[2] + ((lightBrown[2] - darkBrown[2]) * index / totalWords);
+    const layout = d3.layout.cloud()
+        .size([width, height])
+        .words(words.map((d, i) => ({ text: d.text, size: d.size, color: colorScale(i) })))
+        .padding(5)
+        .rotate(() => (Math.random() > 0.5 ? 0 : 90)) // Some words rotated
+        .font("Playfair Display")
+        .fontSize(d => d.size)
+        .on("end", draw);
 
-        return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
+    layout.start();
+
+    function draw(words) {
+        const svg = d3.select("#wordCloudContainer")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+        svg.selectAll("text")
+            .data(words)
+            .enter().append("text")
+            .style("fill", d => d.color)
+            .attr("text-anchor", "middle")
+            .style("font-family", "Playfair Display")
+            .style("font-size", d => `${d.size}px`)
+            .attr("opacity", 0)
+            .transition()
+            .duration(500)
+            .attr("opacity", 1)
+            .attr("transform", d => `translate(${d.x}, ${d.y}) rotate(${d.rotate})`)
+            .text(d => d.text);
     }
-
-    function drawWord(word, x, y, color) {
-        ctx.fillStyle = color;
-        ctx.font = `${word.size}px Playfair Display`;
-        ctx.fillText(word.text, x, y);
-    }
-
-    function findPosition(word) {
-        let x, y, attempts = 0, overlap;
-        const textWidth = ctx.measureText(word.text).width;
-        const textHeight = word.size;
-        const padding = 10; // Small safety margin
-    
-        do {
-            x = Math.random() * (canvas.width - textWidth - padding * 2) + padding;
-            y = Math.random() * (canvas.height - textHeight - padding * 2) + textHeight + padding;
-    
-            // Ensure text is fully inside the canvas
-            x = Math.max(padding, Math.min(x, canvas.width - textWidth - padding));
-            y = Math.max(textHeight + padding, Math.min(y, canvas.height - padding));
-    
-            // Prevent overlap
-            overlap = placedWords.some(w => 
-                Math.abs(x - w.x) < textWidth + 10 && 
-                Math.abs(y - w.y) < textHeight + 10
-            );
-    
-            attempts++;
-        } while (overlap && attempts < 100);
-    
-        return { x, y };
-    }
-
-
-
-    function animateWordCloud() {
-        if (index < words.length) {
-            const word = words[index];
-            const { x, y } = findPosition(word);
-
-            // Ensure the word stays within the canvas
-            if (x + ctx.measureText(word.text).width > canvas.width - 10) {
-                x = canvas.width - ctx.measureText(word.text).width - 10;
-            }
-            if (y - word.size < 10) {
-                y = word.size + 10;
-            }
-
-            placedWords.push({ x, y, text: word.text });
-
-            const color = getGradientColor(index, words.length);
-            drawWord(word, x, y, color);
-
-            index++;
-            setTimeout(animateWordCloud, 500);
-        }
-    }
-
-    animateWordCloud();
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     lottie.loadAnimation({
