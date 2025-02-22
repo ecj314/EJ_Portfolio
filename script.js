@@ -197,6 +197,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Reveal the hero text
     revealElement(heroText, 1000);
 
+    // Reveal the hero list
+    revealElement(heroList, 2000);
+
     // Reveal list items one by one
     heroItems.forEach((item, index) => {
         revealElement(item, (index + 2) * 1000);
