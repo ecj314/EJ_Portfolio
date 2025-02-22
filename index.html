@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional Portfolio of [Ellis Jones]">
+    <meta name="description" content="Professional Portfolio of Ellis Jones">
     <title>Ellis Jones - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
@@ -11,6 +11,27 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        /* New styles for animations */
+        .hero-content {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -23,19 +44,8 @@
     });
 </script>
 
-<style>
-    body {
-        background-color: white;
-        color: black;
-    }
-
-    .dark-mode {
-        background-color: #333;
-        color: white;
-    }
-</style>
-    <header>
-        <h1>Ellis Jones</h1>
+<header>
+    <h1>Ellis Jones</h1>
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -45,75 +55,100 @@
             <img src="https://ecj314.github.io/EJ_Portfolio/Ellis Jones Logo.png" alt="Ellis Jones" class="logo">
         </ul>
     </nav>
-    </header>
+</header>
  
-    <section id="hero">
-        <div class="hero-content">
-            <p>Welcome to my Portfolio! I’m Ellis Jones, a passionate data professional with experience in analysing and interpreting complex data. Explore my projects and see how I turn data into insights that drive decisions.</p>
-            <ul class="hero-list">
-                <li>📊 Experienced in Python, SQL & Power BI/Tableau</li>
-                <li>🤖 Skilled in Machine Learning & Predictive Modeling</li>
-                <li>📈 Passionate about Data Storytelling & Insights</li>
-                <li>🚀 Always learning new technologies & trends</li>
-            </ul>
-        </div>
-        <img src="https://ecj314.github.io/EJ_Portfolio/IMG_3413.jpg" alt="Ellis Jones" class="hero-image">
-    </section>
+<section id="hero">
+    <div class="hero-content" id="heroContent">
+        <p id="heroText" class="hidden">Welcome to my Portfolio! I’m Ellis Jones, a passionate data professional with experience in analysing and interpreting complex data. Explore my projects and see how I turn data into insights that drive decisions.</p>
+        <ul id="heroList" class="hidden">
+            <li>📊 Experienced in Python, SQL & Power BI/Tableau</li>
+            <li>🤖 Skilled in Machine Learning & Predictive Modeling</li>
+            <li>📈 Passionate about Data Storytelling & Insights</li>
+            <li>🚀 Always learning new technologies & trends</li>
+        </ul>
+    </div>
+    <img src="https://ecj314.github.io/EJ_Portfolio/IMG_3413.jpg" alt="Ellis Jones" class="hero-image">
+</section>
 
-    <section id="portfolio">
-        <h2>Current Projects</h2>
-        <div class="portfolio-item">
-            <canvas id="timeSeriesChart"></canvas>
-            <h3>Time Series Analysis of Attrition</h3>
-            <p>Using an ARIMA Model to analyse historical attrition rates to predict future rates.</p>
+<section id="portfolio">
+    <h2>Current Projects</h2>
+    <div class="portfolio-item">
+        <canvas id="timeSeriesChart"></canvas>
+        <h3>Time Series Analysis of Attrition</h3>
+        <p>Using an ARIMA Model to analyse historical attrition rates to predict future rates.</p>
+    </div>
+    <div class="portfolio-item">
+        <canvas id="wordCloudCanvas"></canvas>
+        <h3>NLP Analysis of Employee Survey Results</h3>
+        <p>Using spaCy to analyse employee survey results for themes, sentiment and keywords.</p>
+    </div>
+    <div class="portfolio-item">
+        <div id="coding-animation"></div>
+        <h3>Building This Website</h3>
+        <p>Learning CSS, HTML & Javascript to build this website.</p>
+    </div>
+</section>
 
-        </div>
-        <div class="portfolio-item">
-            <canvas id="wordCloudCanvas"></canvas>
-            <h3>NLP Analysis of Employee Survey Results</h3>
-            <p>Using spaCy to analyse employee survey results for themes, sentiment and keywords.</p>
-        </div>
-        <div class="portfolio-item">
-            <div id="coding-animation"></div>
-            <h3>Building This Website</h3>
-            <p>Learning CSS, HTML & Javascript to build this website.</p>
-        </div>
-    </section>
-    <section id="portfolio-2">
-            <h2>Experience</h2>
-            <div class="portfolio-item" data-bg="#54b77b" data-text="#000000">
-                <img src="https://ecj314.github.io/EJ_Portfolio/Lloyds Banking Group Logo.png" alt="Lloyds Banking Group">
-                <h3>Strategic Insights Manager - Lloyds Banking Group Aug 2023 - Present</h3>
-                <p>Analysed workforce data using SQL, Python, and Tableau, forecasting challenges and presenting insights to senior stakeholders for strategic planning.</p>
-            </div>
+<section id="portfolio-2">
+    <h2>Experience</h2>
+    <div class="portfolio-item" data-bg="#54b77b" data-text="#000000">
+        <img src="https://ecj314.github.io/EJ_Portfolio/Lloyds Banking Group Logo.png" alt="Lloyds Banking Group">
+        <h3>Strategic Insights Manager - Lloyds Banking Group Aug 2023 - Present</h3>
+        <p>Analysed workforce data using SQL, Python, and Tableau, forecasting challenges and presenting insights to senior stakeholders for strategic planning.</p>
+    </div>
+    <div class="portfolio-item" data-bg="#0c499c" data-text="#ffffff">
+        <img src="https://ecj314.github.io/EJ_Portfolio/Babcock Logo.jpeg" alt="Babcock International Group">
+        <h3>Data Analyst - Babcock International Group Aug 2020 - Aug 2023</h3>
+        <p>Led projects enhancing data visualisation, modernising business capabilities, and fostering collaboration to implement consistent, impactful data-driven solutions.</p>
+    </div>
+    <div class="portfolio-item" data-bg="#2275bb" data-text="#ffffff">
+        <img src="https://ecj314.github.io/EJ_Portfolio/IBM Logo.jpeg" alt="IBM">
+        <h3>Finance & IT Analyst - IBM Jun 2018 - Jun 2019</h3>
+        <p>Managed an IT service & led the offshore SQL development team. Resolved incidents, improved reporting, and strengthened client relationships, doubling request resolution efficiency.</p>
+    </div>
+</section>
 
-            <div class="portfolio-item"data-bg="#0c499c" data-text="#ffffff">
-                    <img src="https://ecj314.github.io/EJ_Portfolio/Babcock Logo.jpeg" alt="Babcock International Group">
-                    <h3>Data Analyst - Babcock International Group Aug 2020 - Aug 2023</h3>
-                    <p>Led projects enhancing data visualisation, modernising business capabilities, and fostering collaboration to implement consistent, impactful data-driven solutions.</p>
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form action="mailto:elliscjones@outlook.com" method="post" enctype="text/plain">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
 
-            </div>
+<footer>
+    <p>&copy; 2025 Ellis Jones. All Rights Reserved.</p>
+</footer>
 
-            <div class="portfolio-item"data-bg="#2275bb" data-text="#ffffff">
-                    <img src="https://ecj314.github.io/EJ_Portfolio/IBM Logo.jpeg" alt="IBM">
-                    <h3>Finance & IT Analyst - IBM Jun 2018 - Jun 2019</h3>
-                    <p>Managed an IT service & led the offshore SQL development team. Resolved incidents, improved reporting, and strengthened client relationships, doubling request resolution efficiency.</p>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const heroContent = document.getElementById("heroContent");
+        const heroText = document.getElementById("heroText");
+        const heroList = document.getElementById("heroList");
+        const heroItems = heroList.querySelectorAll("li");
 
-            </div>
+        function revealElement(element, delay) {
+            setTimeout(() => {
+                element.classList.remove("hidden");
+                element.style.opacity = 1;
+            }, delay);
+        }
 
-    </section>
-        <section id="contact">
-        <h2>Contact Me</h2>
-        <form form action="mailto:elliscjones@outlook.com" method="post" enctype="text/plain">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-    <footer>
-        <p>&copy; 2025 Ellis Jones. All Rights Reserved.</p>
-    </footer>
+        // Reveal the hero content
+        heroContent.style.opacity = 1;
+
+        // Reveal the hero text
+        revealElement(heroText, 1000);
+
+        // Reveal list items one by one
+        heroItems.forEach((item, index) => {
+            revealElement(item, (index + 2) * 1000);
+        });
+    });
+</script>
+
 <script src="script.js"></script>
 </body>
 </html>
