@@ -70,13 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: "GCP", size: 36 }
     ];
 
-    const canvas.element = document.getElementById("wordCloudCanvas");
+    const canvas= document.getElementById("wordCloudCanvas");
     if (!canvas) {
         console.error("Canvas element not found!");
         return;
     }
 
-    const ctx = canvas.element.getContext("2d");
+    const ctx = canvas.getContext("2d");
     if (!ctx) {
         console.error("Failed to get canvas context!");
         return;
