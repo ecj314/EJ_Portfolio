@@ -71,7 +71,16 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     const canvas = document.getElementById("wordCloudCanvas");
+    if (!canvas) {
+        console.error("Canvas element not found!");
+        return;
+    }
+
     const ctx = canvas.getContext("2d");
+    if (!ctx) {
+        console.error("Failed to get canvas context!");
+        return;
+    }
 
     canvas.width = window.innerWidth * 0.6;  // 60% of screen width  
     canvas.height = window.innerHeight * 0.4; // 40% of screen height  
@@ -81,23 +90,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function findPosition(word) {
         let x, y, attempts = 0, overlap;
-        const padding = word.size * 2; // Increase padding for spacing
+        const padding = word.size * 1.5; // Increase padding for spacing
 
         do {
             x = Math.random() * (canvas.width - word.size * 5) + padding;
             y = Math.random() * (canvas.height - word.size * 3) + padding;
 
-            // Ensure words don't exceed canvas width
+            // Ensure words stay inside the canvas
             if (x + ctx.measureText(word.text).width > canvas.width - padding) {
                 x = canvas.width - ctx.measureText(word.text).width - padding;
             }
-
-            // Ensure words don't go beyond canvas height
             if (y + word.size > canvas.height - padding) {
                 y = canvas.height - padding;
             }
 
-            // Ensure words don’t overlap too much
+            // Check for overlap
             overlap = placedWords.some(w =>
                 Math.abs(x - w.x) < word.size * 3 &&
                 Math.abs(y - w.y) < word.size * 2
@@ -110,10 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function drawWord(word, x, y, color) {
-        const margin = 10; // Add margin to prevent cutoff
-        x = Math.max(margin, Math.min(x, canvas.width - ctx.measureText(word.text).width - margin));
-        y = Math.max(word.size + margin, Math.min(y, canvas.height - margin));
-
         ctx.fillStyle = color;
         ctx.font = `${word.size}px Playfair Display`;
         ctx.fillText(word.text, x, y);
@@ -126,12 +129,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             placedWords.push({ x, y, text: word.text });
 
-            // Get a gradient color
-            const colorScale = d3.scaleLinear()
-                .domain([0, words.length - 1])
-                .range(["#887561", "#b7aca0"]); // Dark to light brown
-
-            const color = colorScale(index);
+            const colors = ["#887561", "#9e8f7a", "#b7aca0"]; // Gradient effect
+            const color = colors[index % colors.length];
 
             drawWord(word, x, y, color);
             index++;
@@ -140,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    animateWordCloud(); // Start animation
+    animateWordCloud();
 });
 
 
