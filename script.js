@@ -178,30 +178,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const heroContent = document.getElementById("heroContent");
-    const heroText = document.getElementById("heroText");
-    const heroList = document.getElementById("heroList");
-    const heroItems = heroList.querySelectorAll("li");
 
-    function revealElement(element, delay) {
-        setTimeout(() => {
-            element.classList.remove("hidden");
-            element.style.opacity = 1;
-        }, delay);
-    }
-
-    // Reveal the hero content
-    heroContent.style.opacity = 1;
-
-    // Reveal the hero text
-    revealElement(heroText, 1000);
-
-    // Reveal the hero list
-    revealElement(heroList, 2000);
-
-    // Reveal list items one by one
-    heroItems.forEach((item, index) => {
-        revealElement(item, (index + 2) * 1000);
-    });
-});
