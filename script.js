@@ -110,11 +110,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ========== LOTTIE ANIMATION ========== //
 document.addEventListener("DOMContentLoaded", function () {
-    lottie.loadAnimation({
-        container: document.getElementById("coding-animation"),
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        path: "https://raw.githubusercontent.com/ecj314/EJ_Portfolio/refs/heads/main/Coding%20animation.json"
-    });
+    const codingAnimationContainer = document.getElementById("coding-animation");
+
+    if (!codingAnimationContainer) {
+        console.error("Lottie Animation container missing! Add <div id='coding-animation'></div> in your HTML.");
+        return;
+    }
+
+    // Check if animation JSON file is accessible
+    fetch("https://raw.githubusercontent.com/ecj314/EJ_Portfolio/refs/heads/main/Coding%20animation.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Lottie animation file not found.");
+            }
+            return response.json();
+        })
+        .then(animationData => {
+            lottie.loadAnimation({
+                container: codingAnimationContainer,
+                renderer: "svg",
+                loop: true,
+                autoplay: true,
+                animationData: animationData // Load from JSON
+            });
+        })
+        .catch(error => {
+            console.error("Lottie animation failed:", error);
+            codingAnimationContainer.innerHTML = "<p style='color: red;'>Animation failed to load.</p>";
+        });
 });
