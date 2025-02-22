@@ -110,34 +110,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ========== LOTTIE ANIMATION ========== //
 document.addEventListener("DOMContentLoaded", function () {
-    const codingAnimationContainer = document.getElementById("coding-animation");
+    const animationContainer = document.getElementById("coding-animation");
 
-    if (!codingAnimationContainer) {
-        console.error("Lottie Animation container missing! Add <div id='coding-animation'></div> in your HTML.");
+    if (!animationContainer) {
+        console.error("Error: Lottie animation container not found. Ensure you have <div id='coding-animation'></div> in your HTML.");
         return;
     }
 
-    // Check if animation JSON file is accessible
-    fetch("https://raw.githubusercontent.com/ecj314/EJ_Portfolio/refs/heads/main/Coding%20animation.json")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Lottie animation file not found.");
-            }
-            return response.json();
-        })
-        .then(animationData => {
-            lottie.loadAnimation({
-                container: codingAnimationContainer,
-                renderer: "svg",
-                loop: true,
-                autoplay: true,
-                path: "https://cdn.jsdelivr.net/gh/ecj314/EJ_Portfolio@main/Coding%20animation.json",
-                animationData: animationData // Load from JSON
-                
-            });
-        })
-        .catch(error => {
-            console.error("Lottie animation failed:", error);
-            codingAnimationContainer.innerHTML = "<p style='color: red;'>Animation failed to load.</p>";
-        });
+    lottie.loadAnimation({
+        container: animationContainer,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "https://cdn.jsdelivr.net/gh/ecj314/EJ_Portfolio@main/Coding%20animation.json", // Use correct URL
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice' // Ensure it scales properly
+        }
+    });
 });
+
