@@ -131,7 +131,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 renderer: "svg",
                 loop: true,
                 autoplay: true,
+                path: "https://cdn.jsdelivr.net/gh/ecj314/EJ_Portfolio@main/Coding%20animation.json",
                 animationData: animationData // Load from JSON
+                
             });
         })
         .catch(error => {
