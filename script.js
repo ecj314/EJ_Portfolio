@@ -77,7 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: "GCP", size: 36 }
     ];
 
-    const width = 400, height = 300;
+    canvas.width = window.innerWidth * 0.6; // 60% of screen width  
+    canvas.height = window.innerHeight * 0.4; // 40% of screen height  
 
     const colorScale = d3.scaleLinear()
         .domain([0, words.length - 1])
@@ -93,29 +94,45 @@ document.addEventListener("DOMContentLoaded", function () {
         .on("end", draw);
 
     layout.start();
+    
+    function findPosition(word) {
+    let x, y, attempts = 0, overlap;
+    const padding = word.size * 2; // Increase padding for spacing
 
-    function draw(words) {
-        const svg = d3.select("#wordCloudContainer")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .append("g")
-            .attr("transform", `translate(${width / 2}, ${height / 2})`);
+    do {
+        x = Math.random() * (canvas.width - word.size * 5) + padding;
+        y = Math.random() * (canvas.height - word.size * 3) + padding;
 
-        svg.selectAll("text")
-            .data(words)
-            .enter().append("text")
-            .style("fill", d => d.color)
-            .attr("text-anchor", "middle")
-            .style("font-family", "Playfair Display")
-            .style("font-size", d => `${d.size}px`)
-            .attr("opacity", 0)
-            .transition()
-            .duration(500)
-            .attr("opacity", 1)
-            .attr("transform", d => `translate(${d.x}, ${d.y}) rotate(${d.rotate})`)
-            .text(d => d.text);
-    }
+        // Ensure words don't exceed canvas width
+        if (x + ctx.measureText(word.text).width > canvas.width - padding) {
+            x = canvas.width - ctx.measureText(word.text).width - padding;
+        }
+
+        // Ensure words don't go beyond canvas height
+        if (y + word.size > canvas.height - padding) {
+            y = canvas.height - padding;
+        }
+
+        // Ensure words don’t overlap too much
+        overlap = placedWords.some(w => 
+            Math.abs(x - w.x) < word.size * 3 && 
+            Math.abs(y - w.y) < word.size * 2
+        );
+
+        attempts++;
+    } while (overlap && attempts < 100);
+
+    return { x, y };
+}
+function drawWord(word, x, y, color) {
+    const margin = 10; // Add margin to prevent cutoff
+    x = Math.max(margin, Math.min(x, canvas.width - ctx.measureText(word.text).width - margin));
+    y = Math.max(word.size + margin, Math.min(y, canvas.height - margin));
+
+    ctx.fillStyle = color;
+    ctx.font = `${word.size}px Playfair Display`;
+    ctx.fillText(word.text, x, y);
+}
 });
 
 
