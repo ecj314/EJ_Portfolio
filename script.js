@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "https://ecj314.github.io/EJ_Portfolio/coding animation.json" // Replace with the path to your downloaded Lottie JSON file
+        path: "https://ecj314.github.io/EJ_Portfolio/Coding animation.json" // Replace with the path to your downloaded Lottie JSON file
     });
 });
 
