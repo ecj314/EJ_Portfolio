@@ -105,23 +105,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function findPosition(word) {
         let x, y, attempts = 0, overlap;
-        const padding = 20;  // More padding to prevent cutoff
-
+        const padding = word.size * 1.2; // Ensures words stay inside canvas
+    
         do {
             x = Math.random() * (canvas.width - word.size * 4) + padding;
             y = Math.random() * (canvas.height - word.size * 2) + word.size + padding;
-
+    
+            // Ensure word is fully inside canvas
+            if (x + ctx.measureText(word.text).width > canvas.width - padding) {
+                x = canvas.width - ctx.measureText(word.text).width - padding;
+            }
+            if (y - word.size < padding) {
+                y = padding + word.size;
+            }
+            if (y > canvas.height - padding) {
+                y = canvas.height - padding;
+            }
+    
             // Check for overlap
-            overlap = placedWords.some(w =>
-                Math.abs(x - w.x) < w.text.length * 10 &&
-                Math.abs(y - w.y) < word.size + 5
-            );
-
+            overlap = placedWords.some(w => Math.abs(x - w.x) < 80 && Math.abs(y - w.y) < 50);
             attempts++;
-        } while (overlap && attempts < 50);
-
+        } while (overlap && attempts < 100);
+    
         return { x, y };
     }
+
 
     function animateWordCloud() {
         if (index < words.length) {
