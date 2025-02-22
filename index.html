@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Portfolio of [Ellis Jones]">
+    <title>Ellis Jones - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+</head>
+<body>
+
+
+<script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+    });
+</script>
+
+<style>
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    .dark-mode {
+        background-color: #333;
+        color: white;
+    }
+</style>
+    <header>
+        <h1>Ellis Jones</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="Ellis Cameron Jones CV.pdf" download class="btn-nav">Download CV</a></li>
+            <li><a href="https://www.linkedin.com/in/ellis-jones/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/ecj314/EJ_Portfolio" target="_blank">GitHub</a></li>
+            <img src="images/Ellis Jones Logo.png" alt="Ellis Jones" class="logo">
+        </ul>
+    </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <p>Welcome to my Portfolio! I’m Ellis Jones, a passionate data professional with experience in analysing and interpreting complex data. Explore my projects and see how I turn data into insights that drive decisions.</p>
+            <ul class="hero-list">
+                <li>📊 Experienced in Python, SQL & Power BI/Tableau</li>
+                <li>🤖 Skilled in Machine Learning & Predictive Modeling</li>
+                <li>📈 Passionate about Data Storytelling & Insights</li>
+                <li>🚀 Always learning new technologies & trends</li>
+            </ul>
+        </div>
+        <img src="images/IMG_3413.jpg" alt="Ellis Jones" class="hero-image">
+    </section>
+
+    <section id="portfolio">
+        <h2>Current Projects</h2>
+        <div class="portfolio-item">
+            <canvas id="timeSeriesChart"></canvas>
+            <h3>Time Series Analysis of Attrition</h3>
+            <p>Using an ARIMA Model to analyse historic attrition rates to predict future rates.</p>
+
+        </div>
+        <div class="portfolio-item">
+            <canvas id="wordCloudCanvas"></canvas>
+            <h3>NLP Analysis of Employee Survey Results</h3>
+            <p>Using spaCy to analyse employee survey results for themes, sentiment and keywords.</p>
+        </div>
+        <div class="portfolio-item">
+            <div id="coding-animation" class="animation-container"></div>
+            <h3>Building This Website</h3>
+            <p>Learning CSS, HTML & Javascript to build this website.</p>
+        </div>
+    </section>
+    <section id="portfolio-2">
+            <h2>Skills & Experience</h2>
+            <div class="portfolio-item" data-bg="#54b77b" data-text="#000000">
+                <img src="images/Lloyds Banking Group Logo.png" alt="Lloyds Banking Group">
+                <h3>Strategic Insights Manager - Lloyds Banking Group Aug 2023 - Present</h3>
+                <p>Analysed workforce data using SQL, Python, and Tableau, forecasting challenges and presenting insights to senior stakeholders for strategic planning.</p>
+            </div>
+
+            <div class="portfolio-item"data-bg="#0c499c" data-text="#ffffff">
+                    <img src="images/Babcock Logo.jpeg" alt="Babcock International Group">
+                    <h3>Data Analyst - Babcock International Group Aug 2020 - Aug 2023</h3>
+                    <p>Led projects enhancing data visualisation, modernising business capabilities, and fostering collaboration to implement consistent, impactful data-driven solutions.</p>
+
+            </div>
+
+            <div class="portfolio-item"data-bg="#2275bb" data-text="#ffffff">
+                    <img src="images/IBM Logo.jpeg" alt="IBM">
+                    <h3>Finance & IT Analyst - IBM Jun 2018 - Jun 2019</h3>
+                    <p>Managed an IT service & led the offshore SQL development team.Resolved incidents, improved reporting, and strengthened client relationships, doubling request resolution efficiency.</p>
+
+            </div>
+
+    </section>
+        <section id="contact">
+        <h2>Contact Me</h2>
+        <form form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2025 Ellis Jones. All Rights Reserved.</p>
+    </footer>
+<script src="script.js"></script>
+</body>
+</html>
