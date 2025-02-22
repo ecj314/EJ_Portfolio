@@ -103,32 +103,42 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.fillText(word.text, x, y);
     }
 
-    function findPosition(word) {
-        let x, y, attempts = 0, overlap;
-        const padding = word.size * 1.2; // Ensures words stay inside canvas
-    
-        do {
-            x = Math.random() * (canvas.width - word.size * 4) + padding;
-            y = Math.random() * (canvas.height - word.size * 2) + word.size + padding;
-    
-            // Ensure word is fully inside canvas
-            if (x + ctx.measureText(word.text).width > canvas.width - padding) {
-                x = canvas.width - ctx.measureText(word.text).width - padding;
-            }
-            if (y - word.size < padding) {
-                y = padding + word.size;
-            }
-            if (y > canvas.height - padding) {
-                y = canvas.height - padding;
-            }
-    
-            // Check for overlap
-            overlap = placedWords.some(w => Math.abs(x - w.x) < 80 && Math.abs(y - w.y) < 50);
-            attempts++;
-        } while (overlap && attempts < 100);
-    
-        return { x, y };
-    }
+function findPosition(word) {
+    let x, y, attempts = 0, overlap;
+    const textWidth = ctx.measureText(word.text).width;
+    const padding = word.size * 1.5; // Increased padding for safety
+
+    do {
+        x = Math.random() * (canvas.width - textWidth - padding * 2) + padding;
+        y = Math.random() * (canvas.height - word.size * 2 - padding * 2) + word.size + padding;
+
+        // Ensure the word does not exceed the right boundary
+        if (x + textWidth > canvas.width - padding) {
+            x = canvas.width - textWidth - padding;
+        }
+
+        // Ensure the word does not go below the canvas
+        if (y > canvas.height - padding) {
+            y = canvas.height - padding;
+        }
+
+        // Ensure the word does not go above the canvas
+        if (y - word.size < padding) {
+            y = padding + word.size;
+        }
+
+        // Prevent overlapping
+        overlap = placedWords.some(w => 
+            Math.abs(x - w.x) < textWidth + 20 && 
+            Math.abs(y - w.y) < word.size + 10
+        );
+
+        attempts++;
+    } while (overlap && attempts < 100);
+
+    return { x, y };
+}
+
 
 
     function animateWordCloud() {
