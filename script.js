@@ -151,11 +151,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     lottie.loadAnimation({
-        container: document.getElementById("coding-animation"), // The div where the animation will appear
+        container: document.getElementById("coding-animation"), 
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "https://ecj314.github.io/EJ_Portfolio/Coding animation.json" // Replace with the path to your downloaded Lottie JSON file
+        path: "https://ecj314.github.io/EJ_Portfolio/Coding animation.json"
     });
 });
 
