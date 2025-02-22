@@ -57,9 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ========== WORD CLOUD (D3.js) ========== //
 document.addEventListener("DOMContentLoaded", function () {
-    const width = window.innerWidth * 0.6;
-    const height = window.innerHeight * 0.4;
-    
     const words = [
         { text: "Gen AI", size: 40 },
         { text: "Blockchain", size: 35 },
@@ -73,40 +70,79 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: "GCP", size: 36 }
     ];
 
-    const colorScale = d3.scaleLinear()
-        .domain([0, words.length - 1])
-        .range(["#887561", "#b7aca0"]);
+    const canvas = document.getElementById("wordCloudCanvas");
+    const ctx = canvas.getContext("2d");
 
-    const layout = d3.layout.cloud()
-        .size([width, height])
-        .words(words.map((d, i) => ({ text: d.text, size: d.size, color: colorScale(i) })))
-        .padding(5)
-        .rotate(() => (Math.random() > 0.5 ? 0 : 90))
-        .font("Playfair Display")
-        .fontSize(d => d.size)
-        .on("end", draw);
+    canvas.width = window.innerWidth * 0.6;  // 60% of screen width  
+    canvas.height = window.innerHeight * 0.4; // 40% of screen height  
 
-    layout.start();
+    const placedWords = [];
+    let index = 0;
 
-    function draw(words) {
-        d3.select("#wordCloudCanvas").html(""); // Clear existing content before drawing
+    function findPosition(word) {
+        let x, y, attempts = 0, overlap;
+        const padding = word.size * 2; // Increase padding for spacing
 
-        d3.select("#wordCloudCanvas")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .append("g")
-            .attr("transform", `translate(${width / 2}, ${height / 2})`)
-            .selectAll("text")
-            .data(words)
-            .enter().append("text")
-            .style("font-size", d => `${d.size}px`)
-            .style("fill", d => d.color)
-            .attr("text-anchor", "middle")
-            .attr("transform", d => `translate(${d.x}, ${d.y}) rotate(${d.rotate})`)
-            .text(d => d.text);
+        do {
+            x = Math.random() * (canvas.width - word.size * 5) + padding;
+            y = Math.random() * (canvas.height - word.size * 3) + padding;
+
+            // Ensure words don't exceed canvas width
+            if (x + ctx.measureText(word.text).width > canvas.width - padding) {
+                x = canvas.width - ctx.measureText(word.text).width - padding;
+            }
+
+            // Ensure words don't go beyond canvas height
+            if (y + word.size > canvas.height - padding) {
+                y = canvas.height - padding;
+            }
+
+            // Ensure words don’t overlap too much
+            overlap = placedWords.some(w =>
+                Math.abs(x - w.x) < word.size * 3 &&
+                Math.abs(y - w.y) < word.size * 2
+            );
+
+            attempts++;
+        } while (overlap && attempts < 100);
+
+        return { x, y };
     }
+
+    function drawWord(word, x, y, color) {
+        const margin = 10; // Add margin to prevent cutoff
+        x = Math.max(margin, Math.min(x, canvas.width - ctx.measureText(word.text).width - margin));
+        y = Math.max(word.size + margin, Math.min(y, canvas.height - margin));
+
+        ctx.fillStyle = color;
+        ctx.font = `${word.size}px Playfair Display`;
+        ctx.fillText(word.text, x, y);
+    }
+
+    function animateWordCloud() {
+        if (index < words.length) {
+            const word = words[index];
+            const { x, y } = findPosition(word);
+
+            placedWords.push({ x, y, text: word.text });
+
+            // Get a gradient color
+            const colorScale = d3.scaleLinear()
+                .domain([0, words.length - 1])
+                .range(["#887561", "#b7aca0"]); // Dark to light brown
+
+            const color = colorScale(index);
+
+            drawWord(word, x, y, color);
+            index++;
+
+            setTimeout(animateWordCloud, 500); // Delay before next word
+        }
+    }
+
+    animateWordCloud(); // Start animation
 });
+
 
 // ========== LOTTIE ANIMATION ========== //
 document.addEventListener("DOMContentLoaded", function () {
