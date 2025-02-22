@@ -13,7 +13,8 @@
 </head>
 <body>
 
-
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
 <script>
     const toggleButton = document.getElementById('theme-toggle');
     const body = document.body;
@@ -69,7 +70,7 @@
 
         </div>
         <div class="portfolio-item">
-            <canvas id="wordCloudCanvas"></canvas>
+            <div id="wordCloudContainer"></div>
             <h3>NLP Analysis of Employee Survey Results</h3>
             <p>Using spaCy to analyse employee survey results for themes, sentiment and keywords.</p>
         </div>
