@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("Portfolio section loaded");  // Debugging line
     const portfolioItems = document.querySelectorAll(".portfolio-item");
 
     portfolioItems.forEach(item => {
+        console.log("Processing portfolio item");  // Debugging line
         const bgColor = item.getAttribute("data-bg");
         const textColor = item.getAttribute("data-text");
 
@@ -15,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("Time Series Chart section loaded");  // Debugging line
     const ctx = document.getElementById("timeSeriesChart").getContext("2d");
 
     const fullData = [5, 4, 3, 2, 3, 4, 3, 4, 5, 6, 7, 6];
@@ -57,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ========== WORD CLOUD (D3.js) ========== //
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("Word Cloud section loaded");  // Debugging line
     const words = [
         { text: "Gen AI", size: 40 },
         { text: "Blockchain", size: 35 },
@@ -89,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let index = 0;
 
     function findPosition(word) {
+        console.log("Finding position for word:", word.text);  // Debugging line
         let x, y, attempts = 0, overlap;
         const padding = word.size * 1.5; // Increase padding for spacing
 
@@ -117,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function drawWord(word, x, y, color) {
+        console.log("Drawing word:", word.text);  // Debugging line
         ctx.fillStyle = color;
         ctx.font = `${word.size}px Playfair Display`;
         ctx.fillText(word.text, x, y);
@@ -142,9 +148,9 @@ document.addEventListener("DOMContentLoaded", function () {
     animateWordCloud();
 });
 
-
 // ========== LOTTIE ANIMATION ========== //
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("Lottie animation section loaded");  // Debugging line
     const animationContainer = document.getElementById("coding-animation");
 
     if (!animationContainer) {
