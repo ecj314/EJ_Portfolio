@@ -124,15 +124,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return { x, y };
 }
-function drawWord(word, x, y, color) {
-    const margin = 10; // Add margin to prevent cutoff
-    x = Math.max(margin, Math.min(x, canvas.width - ctx.measureText(word.text).width - margin));
-    y = Math.max(word.size + margin, Math.min(y, canvas.height - margin));
-
-    ctx.fillStyle = color;
-    ctx.font = `${word.size}px Playfair Display`;
-    ctx.fillText(word.text, x, y);
-}
+    function drawWord(word, x, y, color) {
+        const margin = 10; // Add margin to prevent cutoff
+        x = Math.max(margin, Math.min(x, canvas.width - ctx.measureText(word.text).width - margin));
+        y = Math.max(word.size + margin, Math.min(y, canvas.height - margin));
+    
+        ctx.fillStyle = color;
+        ctx.font = `${word.size}px Playfair Display`;
+        ctx.fillText(word.text, x, y);
+    }
 });
 
 
