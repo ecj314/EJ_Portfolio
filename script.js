@@ -113,19 +113,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const animationContainer = document.getElementById("coding-animation");
 
     if (!animationContainer) {
-        console.error("Error: Lottie animation container not found. Ensure you have <div id='coding-animation'></div> in your HTML.");
+        console.error("❌ ERROR: Lottie animation container not found! Ensure you have <div id='coding-animation'></div> in your HTML.");
         return;
     }
 
-    lottie.loadAnimation({
+    const animation = lottie.loadAnimation({
         container: animationContainer,
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "https://cdn.jsdelivr.net/gh/ecj314/EJ_Portfolio@main/Coding%20animation.json", // Use correct URL
+        path: "https://cdn.jsdelivr.net/gh/ecj314/EJ_Portfolio@main/Coding%20animation.json",
         rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice' // Ensure it scales properly
+            preserveAspectRatio: 'xMidYMid slice'
         }
     });
-});
 
+    animation.addEventListener("data_failed", function () {
+        console.error("❌ ERROR: Animation failed to load! Check JSON URL and format.");
+    });
+
+    animation.addEventListener("DOMLoaded", function () {
+        console.log("✅ Animation successfully loaded!");
+    });
+});
