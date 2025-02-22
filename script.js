@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "https://ecj314.github.io/EJ_Portfolio/Coding animation.json"
+        path: "https://raw.githubusercontent.com/ecj314/EJ_Portfolio/refs/heads/main/Coding%20animation.json"
     });
 });
 
