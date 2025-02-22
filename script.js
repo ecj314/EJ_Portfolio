@@ -103,41 +103,31 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.fillText(word.text, x, y);
     }
 
-function findPosition(word) {
-    let x, y, attempts = 0, overlap;
-    const textWidth = ctx.measureText(word.text).width;
-    const padding = word.size * 1.5; // Increased padding for safety
-
-    do {
-        x = Math.random() * (canvas.width - textWidth - padding * 2) + padding;
-        y = Math.random() * (canvas.height - word.size * 2 - padding * 2) + word.size + padding;
-
-        // Ensure the word does not exceed the right boundary
-        if (x + textWidth > canvas.width - padding) {
-            x = canvas.width - textWidth - padding;
-        }
-
-        // Ensure the word does not go below the canvas
-        if (y > canvas.height - padding) {
-            y = canvas.height - padding;
-        }
-
-        // Ensure the word does not go above the canvas
-        if (y - word.size < padding) {
-            y = padding + word.size;
-        }
-
-        // Prevent overlapping
-        overlap = placedWords.some(w => 
-            Math.abs(x - w.x) < textWidth + 20 && 
-            Math.abs(y - w.y) < word.size + 10
-        );
-
-        attempts++;
-    } while (overlap && attempts < 100);
-
-    return { x, y };
-}
+    function findPosition(word) {
+        let x, y, attempts = 0, overlap;
+        const textWidth = ctx.measureText(word.text).width;
+        const textHeight = word.size;
+        const padding = 10; // Small safety margin
+    
+        do {
+            x = Math.random() * (canvas.width - textWidth - padding * 2) + padding;
+            y = Math.random() * (canvas.height - textHeight - padding * 2) + textHeight + padding;
+    
+            // Ensure text is fully inside the canvas
+            x = Math.max(padding, Math.min(x, canvas.width - textWidth - padding));
+            y = Math.max(textHeight + padding, Math.min(y, canvas.height - padding));
+    
+            // Prevent overlap
+            overlap = placedWords.some(w => 
+                Math.abs(x - w.x) < textWidth + 10 && 
+                Math.abs(y - w.y) < textHeight + 10
+            );
+    
+            attempts++;
+        } while (overlap && attempts < 100);
+    
+        return { x, y };
+    }
 
 
 
