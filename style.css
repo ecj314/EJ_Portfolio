@@ -216,7 +216,6 @@ nav ul li a:hover {
     z-index: 10;
     background: 635344;
     padding: 5px;
-    display: inline-block;
 }
 
 
@@ -228,6 +227,10 @@ nav ul li a:hover {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+}
+
+#contact h2 {
+    text-align: center;
 }
 
 #contact input,
