@@ -91,6 +91,7 @@ nav ul li a:hover {
 
 .hero-content {
     max-width: 50%; /* Prevent text from taking full width */
+    text-align: justify;
 }
 
 .hero-image {
