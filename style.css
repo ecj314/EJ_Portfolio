@@ -233,6 +233,10 @@ nav ul li a:hover {
     text-align: center;
 }
 
+#contact p {
+    text-align: center;
+}
+
 #contact input,
 #contact textarea {
     width: 100%;
