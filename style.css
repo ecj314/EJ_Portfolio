@@ -171,6 +171,7 @@ nav ul li a:hover {
 }
 
 #portfolio h2 {
+    text-align: center;
     position: relative;
     z-index: 10;
     background: 635344;
@@ -207,6 +208,17 @@ nav ul li a:hover {
 .portfolio-item p {
     margin: 10px 0;
 }
+
+
+#portfolio-2 h2 {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    background: 635344;
+    padding: 5px;
+    display: inline-block;
+}
+
 
 /* Contact Section */
 #contact form {
