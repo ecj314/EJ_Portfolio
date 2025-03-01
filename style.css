@@ -187,6 +187,7 @@ nav ul li a:hover {
     text-align: center;
     transition: all 0.3s ease-in-out;
     overflow: hidden; /* Prevents content from spilling out */
+    height: 300px; /* Keeps the aspect ratio */
 }
 
 .portfolio-item:hover {
@@ -198,7 +199,6 @@ nav ul li a:hover {
 .portfolio-item img {
     width: 100%; /* Makes sure the image scales within its container */
     max-width: 300px; /* Set a maximum width */
-    height: auto; /* Keeps the aspect ratio */
     border-radius: 10px; /* Optional: adds rounded corners */
     display: block; /* Removes any extra space below images */
     margin: 0 auto; /* Centers the image */
