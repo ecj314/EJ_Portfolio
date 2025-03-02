@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "https://cdn.jsdelivr.net/gh/ecj314/EJ_Portfolio@main/Coding%20animation.json",
+        path: "https://cdn.jsdelivr.net/gh/ecj314/EJ_Portfolio/Website_Files/Coding%20animation.json",
         rendererSettings: {
             preserveAspectRatio: 'xMidYMid slice'
         }
