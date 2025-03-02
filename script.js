@@ -178,27 +178,37 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-const slides = document.querySelectorAll(".carousel-slide");
-const prevButton = document.querySelector(".prev");
-const nextButton = document.querySelector(".next");
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".carousel-slide");
+    const container = document.querySelector(".carousel-container");
+    const prevButton = document.querySelector(".prev");
+    const nextButton = document.querySelector(".next");
 
-let index = 0;
+    let index = 0;
 
-function showSlide(newIndex) {
-    if (newIndex < 0) {
-        index = slides.length - 1;
-    } else if (newIndex >= slides.length) {
-        index = 0;
-    } else {
-        index = newIndex;
+    function showSlide(newIndex) {
+        if (newIndex < 0) {
+            index = slides.length - 1;
+        } else if (newIndex >= slides.length) {
+            index = 0;
+        } else {
+            index = newIndex;
+        }
+
+        const offset = -index * 100 + "%";
+        container.style.transform = `translateX(${offset})`;
     }
 
-    const offset = -index * 100 + "%";
-    document.querySelector(".carousel-container").style.transform = `translateX(${offset})`;
-}
+    prevButton.addEventListener("click", function () {
+        showSlide(index - 1);
+    });
 
-prevButton.addEventListener("click", () => showSlide(index - 1));
-nextButton.addEventListener("click", () => showSlide(index + 1));
+    nextButton.addEventListener("click", function () {
+        showSlide(index + 1);
+    });
+
+    showSlide(index); // Initialize carousel on load
+});
 
 
 
