@@ -234,12 +234,19 @@ nav ul li a:hover {
     position: relative;
     display: flex;
     width: 100%; /* Adjust width as needed */
-    height: 300px; /* Set height to fit your slides */
     overflow: hidden; /* Hide overflow to show one slide at a time */
 }
 
 .carousel-slide {
-    display: none; /* Hide slides by default */
+    width: 100%; /* Set the slide width to fill the container */
+    height: auto; /* Allow the slide to adjust height automatically */
+    display: none; /* Hide slides initially */
+    transition: transform 0.5s ease; /* Smooth transition for sliding effect */
+}
+.carousel-slide img {
+    width: 100%; /* Make image fill the width of the slide container */
+    height: auto; /* Maintain image aspect ratio */
+    object-fit: contain; /* Ensure image doesn't get cut off, but fits within the container */
 }
 
 .carousel-slide:first-child {
