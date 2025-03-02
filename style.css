@@ -261,6 +261,14 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
+.prev, .next {
+    display: none; /* Hide buttons initially */
+}
+
+.prev[style*="block"], .next[style*="block"] {
+    display: block; /* Show buttons when appropriate */
+}
+
 /* Contact Section */
 #contact form {
     max-width: 500px;
