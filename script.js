@@ -178,40 +178,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const slides = document.querySelectorAll(".carousel-slide");
-    const container = document.querySelector(".carousel-container");
-    const prevButton = document.querySelector(".prev");
-    const nextButton = document.querySelector(".next");
+// JavaScript for the Carousel Functionality
+document.addEventListener("DOMContentLoaded", function() {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
 
-    let index = 0;
+    function showSlide(index) {
+        // Make sure the index is within the bounds
+        if (index < 0) currentSlide = slides.length - 1;
+        if (index >= slides.length) currentSlide = 0;
 
-    function showSlide(newIndex) {
-        if (newIndex < 0) {
-            index = slides.length - 1; // Go to last slide if moving backward from first
-        } else if (newIndex >= slides.length) {
-            index = 0; // Go back to first slide when reaching the end
-        } else {
-            index = newIndex;
-        }
+        // Hide all slides
+        slides.forEach(slide => slide.style.display = 'none');
 
-        const offset = -index * 100 + "%";
-        container.style.transform = `translateX(${offset})`;
+        // Show the current slide
+        slides[currentSlide].style.display = 'block';
     }
 
-    // Ensure buttons exist before adding event listeners
-    if (prevButton && nextButton) {
-        prevButton.addEventListener("click", function () {
-            showSlide(index - 1);
-        });
+    // Initialize the first slide
+    showSlide(currentSlide);
 
-        nextButton.addEventListener("click", function () {
-            showSlide(index + 1);
-        });
-    }
+    // Event listeners for buttons
+    prevButton.addEventListener('click', () => {
+        currentSlide--;
+        showSlide(currentSlide);
+    });
 
-    showSlide(index); // Initialize carousel
+    nextButton.addEventListener('click', () => {
+        currentSlide++;
+        showSlide(currentSlide);
+    });
 });
-
 
 
