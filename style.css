@@ -233,12 +233,12 @@ nav ul li a:hover {
 .carousel-container {
     position: relative;
     display: flex;
-    overflow: hidden;
     width: 100%; /* Adjust the width as needed */
+    overflow: hidden; /* Hide the overflow to show one slide at a time */
 }
 
 .carousel-slide {
-    min-width: 100%;
+    min-width: 100%; /* Make each slide take up the full width */
     transition: transform 0.5s ease-in-out;
 }
 
