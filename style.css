@@ -292,16 +292,26 @@ nav ul li a:hover {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Playfair Display', serif !important; /* Ensure consistent font */
 }
 
 #contact h2 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 #contact p {
     text-align: center;
 }
 
+/* Styling the labels */
+#contact label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block; /* Ensures label takes full width */
+}
+
+/* Styling input fields, textarea, and button */
 #contact input,
 #contact textarea {
     width: 100%;
@@ -310,20 +320,7 @@ nav ul li a:hover {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
-}
-
-#contact label {
-    font-size: 16px;
-    margin-bottom: 8px;
-}
-
-#contact input, #contact textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
+    box-sizing: border-box; /* Prevents padding from increasing width */
 }
 
 #contact button {
@@ -334,24 +331,34 @@ nav ul li a:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    width: 100%; /* Ensure button takes full width */
+    box-sizing: border-box; /* Prevents padding from increasing width */
 }
 
+/* Hover effect for the button */
 #contact button:hover {
     background: #887561;
 }
 
 /* Apply the same font to the entire form */
-form {
-    font-family: 'Playfair Display', serif !important; /* Or your preferred font */
-}
-
-/* Apply to individual form elements */
 form input,
 form textarea,
 form button {
     font-family: 'Playfair Display', serif !important; /* Ensures consistency */
-    font-size: 16px; /* Adjust if needed */
 }
+
+/* Responsive Design: Ensure the form adjusts to smaller screens */
+@media (max-width: 768px) {
+    #contact form {
+        padding: 15px;
+        max-width: 100%; /* Allow form to take full width on smaller screens */
+    }
+
+    #contact button {
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+    }
+}
+
 
 
 /* Footer */
