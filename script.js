@@ -197,6 +197,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const offset = -index * 100 + "%";
         container.style.transform = `translateX(${offset})`;
+
+        // Update button visibility
+        if (prevButton) {
+            prevButton.style.display = index === 0 ? 'none' : 'block';
+        }
     }
 
     // Ensure buttons exist before adding event listeners

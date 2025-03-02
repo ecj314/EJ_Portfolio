@@ -237,7 +237,11 @@ nav ul li a:hover {
 
 .carousel-slide {
     min-width: 100%;
-    text-align: center;
+    /* Add other necessary styles */
+}
+
+.prev[style*="block"], .next[style*="block"] {
+    display: block; /* Show buttons when appropriate */
 }
 
 .carousel-slide img {
