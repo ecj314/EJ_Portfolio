@@ -188,9 +188,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showSlide(newIndex) {
         if (newIndex < 0) {
-            index = slides.length - 1;
+            index = slides.length - 1; // Go to last slide if moving backward from first
         } else if (newIndex >= slides.length) {
-            index = 0;
+            index = 0; // Go back to first slide when reaching the end
         } else {
             index = newIndex;
         }
@@ -199,15 +199,18 @@ document.addEventListener("DOMContentLoaded", function () {
         container.style.transform = `translateX(${offset})`;
     }
 
-    prevButton.addEventListener("click", function () {
-        showSlide(index - 1);
-    });
+    // Ensure buttons exist before adding event listeners
+    if (prevButton && nextButton) {
+        prevButton.addEventListener("click", function () {
+            showSlide(index - 1);
+        });
 
-    nextButton.addEventListener("click", function () {
-        showSlide(index + 1);
-    });
+        nextButton.addEventListener("click", function () {
+            showSlide(index + 1);
+        });
+    }
 
-    showSlide(index); // Initialize carousel on load
+    showSlide(index); // Initialize carousel
 });
 
 
