@@ -208,6 +208,13 @@ nav ul li a:hover {
     margin: 0 auto; /* Centers the image */
 }
 
+.portfolio-item .carousel-container {
+    width: 100%; /* Allow the carousel to take full width */
+    height: auto; /* Let the height adjust according to the content */
+    grid-column: span 2; /* Optional: make carousel span two columns if needed */
+    padding: 0; /* Remove extra padding if it's causing issues */
+    overflow: visible; /* Allow overflow if needed */
+}
 
 .portfolio-item h3,
 .portfolio-item p {
@@ -235,6 +242,12 @@ nav ul li a:hover {
     display: flex;
     width: 100%; /* Adjust width as needed */
     overflow: hidden; /* Hide overflow to show one slide at a time */
+}
+
+.carousel-container img {
+    width: 100%; /* Make image fill the container */
+    height: auto; /* Keep the aspect ratio intact */
+    object-fit: contain; /* Ensure the image fits within the container */
 }
 
 .carousel-slide {
