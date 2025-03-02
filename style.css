@@ -261,11 +261,6 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
-
-
-
 /* Contact Section */
 #contact form {
     max-width: 500px;
