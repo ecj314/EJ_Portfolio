@@ -231,13 +231,15 @@ nav ul li a:hover {
 }
 
 .carousel-container {
+    position: relative;
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    overflow: hidden;
+    width: 100%; /* Adjust the width as needed */
 }
 
 .carousel-slide {
     min-width: 100%;
-    /* Add other necessary styles */
+    transition: transform 0.5s ease-in-out;
 }
 
 .prev[style*="block"], .next[style*="block"] {
@@ -261,13 +263,12 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-.prev, .next {
-    display: none; /* Hide buttons initially */
+.prev {
+    left: 10px;
 }
 
-.prev[style*="block"], .next[style*="block"] {
-    display: block; /* Show buttons when appropriate */
-}
+.next {
+    right: 10px;
 
 /* Contact Section */
 #contact form {
