@@ -24,10 +24,13 @@ header {
     top: 0;
     z-index: 1000;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-#header h1 {
-    left: 10px;  /* Sticks to the left */
+.header h1 {
+    flex: 1; /* Pushes content to the left */
+    margin: 0; /* Removes default margin */
 
 }
 
@@ -47,7 +50,10 @@ nav ul li a {
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s ease;
-    justify-content: center;
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centers the links */
+    gap: 20px; /* Adds spacing between links */
 }
 
 nav ul img {
