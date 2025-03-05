@@ -26,6 +26,11 @@ header {
     display: flex;
 }
 
+header h1 {
+    left: 10px;  /* Sticks to the left */
+
+}
+
 nav ul {
     list-style: none;
     display: flex;
