@@ -29,6 +29,7 @@ nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
+
 }
 
 nav ul li {
@@ -43,8 +44,9 @@ nav ul li a {
 }
 
 nav ul img {
-    width: 20px; /* Adjust size */
-    height: 20px;
+    width: 50px; /* Adjust size */
+    height: auto;
+    margin-left: auto; /* Pushes the image to the right */
 }
 
 nav ul li a:hover {
