@@ -23,6 +23,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    justify-content: center;
 }
 
 nav ul {
@@ -46,7 +47,7 @@ nav ul li a {
 nav ul img {
     width: 50px; /* Adjust size */
     height: auto;
-    margin-left: auto; /* Pushes the image to the right */
+    right: 10px;  /* Sticks to the right */
 }
 
 nav ul li a:hover {
