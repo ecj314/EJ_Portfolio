@@ -42,6 +42,11 @@ nav ul li a {
     transition: color 0.3s ease;
 }
 
+nav ul img {
+    width: 300px; /* Adjust size */
+    height: auto;
+}
+
 nav ul li a:hover {
     color: #887561;
 }
