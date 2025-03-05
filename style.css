@@ -119,6 +119,19 @@ nav ul li a:hover {
     color: #f4f4f4;
 }
 
+.hero-list {
+    list-style-type: none; /* Removes default bullets */
+    padding: 0;
+    margin: 0; /* Ensure no extra space */
+}
+
+.hero-list li {
+    display: flex;
+    align-items: center;
+    padding-left: 0; /* Remove any extra padding */
+}
+
+
 /* Button */
 .btn {
     display: inline-block;
@@ -287,7 +300,7 @@ nav ul li a:hover {
 
 /* Footer */
 footer {
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0;
     background: #635344;
