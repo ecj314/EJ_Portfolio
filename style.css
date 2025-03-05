@@ -292,6 +292,7 @@ nav ul li a:hover {
     cursor: pointer;
     font-size: 16px;
     width: 100%;
+    font-family: 'Playfair Display', serif !important;
 }
 
 #contact button:hover {
@@ -389,7 +390,6 @@ footer {
 
     #contact button {
         padding: 10px 20px;
-        font-family: 'Playfair Display', serif !important;
     }
 }
 
