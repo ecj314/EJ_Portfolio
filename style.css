@@ -26,7 +26,7 @@ header {
     display: flex;
 }
 
-header h1 {
+#header h1 {
     left: 10px;  /* Sticks to the left */
 
 }
