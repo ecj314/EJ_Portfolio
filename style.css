@@ -195,8 +195,9 @@ nav ul li a:hover {
 
 .carousel-container {
     position: relative;
-    display: flex;
     width: 100%;
+    max-width: 600px; /* Adjust as needed */
+    height: 400px; /* Set a fixed height */
     overflow: hidden;
 }
 
@@ -208,6 +209,13 @@ nav ul li a:hover {
 }
 
 .carousel-slide:first-child {
+    display: block;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%; /* Ensure it fills the container */
+    object-fit: cover; /* Prevent distortion */
     display: block;
 }
 
