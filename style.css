@@ -20,10 +20,12 @@ header {
     background: #635344;
     color: white;
     padding: 15px 20px;
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 1000;
-    justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;  /* Keeps the links centered */
 }
 
 nav ul {
@@ -48,6 +50,7 @@ nav ul img {
     width: 50px; /* Adjust size */
     height: auto;
     right: 10px;  /* Sticks to the right */
+    position: absolute;
 }
 
 nav ul li a:hover {
