@@ -367,17 +367,21 @@ footer {
 }
 
 .ticker {
-    display: inline-block;
+    display: flex;
     animation: ticker-scroll 20s linear infinite; /* Slowed down animation */
     white-space: nowrap;
-    padding-right: 100%; /* Ensures there is enough space for seamless scroll */
-    will-change: transform;
+    min-width: 100%;
 
 }
 
 .ticker span {
     display: inline-block; /* Treats each text piece as inline */
     padding-right: 30px; /* Space between repeats */
+}
+
+.ticker-wrapper .ticker::after {
+    content: attr(data-text); /* Repeats the text */
+    padding-left: 30px; /* Space between loops */
 }
 
 @keyframes ticker-scroll {
