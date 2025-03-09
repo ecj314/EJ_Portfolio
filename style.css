@@ -29,6 +29,14 @@ header {
     margin: 0;
 }
 
+header img {
+    order: 2; /* Ensures the image comes after the navigation */
+}
+
+nav {
+    order: 1; /* Ensures the navigation comes before the image */
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -218,8 +226,11 @@ nav ul li a:hover {
     width: 100%;
     height: auto;
     display: none;
-    transition: transform 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
 }
+
 
 .carousel-slide:first-child {
     display: block;
@@ -230,6 +241,12 @@ nav ul li a:hover {
     height: 100%; /* Ensure it fills the container */
     object-fit: cover; /* Prevent distortion */
     display: block;
+}
+
+
+.carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .prev, .next {

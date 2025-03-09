@@ -186,30 +186,22 @@ document.addEventListener("DOMContentLoaded", function() {
     const nextButton = document.querySelector('.next');
 
     function showSlide(index) {
-        // Make sure the index is within the bounds
         if (index < 0) currentSlide = slides.length - 1;
         if (index >= slides.length) currentSlide = 0;
 
-        // Hide all slides
-        slides.forEach(slide => slide.style.display = 'none');
-
-        // Show the current slide
-        slides[currentSlide].style.display = 'block';
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[currentSlide].classList.add('active');
     }
 
-    // Initialize the first slide
     showSlide(currentSlide);
 
-    // Event listeners for buttons
     prevButton.addEventListener('click', () => {
+        console.log('Prev button clicked');
         currentSlide--;
         showSlide(currentSlide);
     });
 
     nextButton.addEventListener('click', () => {
+        console.log('Next button clicked');
         currentSlide++;
         showSlide(currentSlide);
-    });
-});
-
-
