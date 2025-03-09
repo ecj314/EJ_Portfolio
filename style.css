@@ -29,13 +29,14 @@ header {
     margin: 0;
 }
 
+nav {
+    order: 1; /* Ensures the navigation comes before the image */
+}
+
 header img {
     order: 2; /* Ensures the image comes after the navigation */
 }
 
-nav {
-    order: 1; /* Ensures the navigation comes before the image */
-}
 
 nav ul {
     list-style: none;
@@ -209,9 +210,9 @@ nav ul li a:hover {
 .carousel {
     position: relative;
     overflow: hidden;
-    width: 1900px;
+    width: 1400px;
     margin: auto;
-    max-width: 1900px; /* Optional maximum width for responsiveness */
+    max-width: 1400px; /* Optional maximum width for responsiveness */
     height: 500px; /* Set a fixed height for the carousel */
     border: 2px solid #ddd; /* Optional border for visual effect */
     border-radius: 10px;
