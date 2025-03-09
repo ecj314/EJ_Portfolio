@@ -211,10 +211,11 @@ nav ul li a:hover {
 .carousel {
     position: relative;
     overflow: hidden;
-    width: 900px;
+    width: auto;
     margin: auto;
     max-width: 900px; /* Optional maximum width for responsiveness */
-    height: 500px; /* Set a fixed height for the carousel */
+    max-heigt: 500px;
+    height: auto; /* Set a fixed height for the carousel */
     border: 2px solid #ddd; /* Optional border for visual effect */
     border-radius: 10px;
 }
@@ -238,7 +239,7 @@ nav ul li a:hover {
 
 .carousel-slide img {
     max-width: 100%; /* Scales the image to fit horizontally */
-    height: auto; /* Keeps the image proportions intact */
+    height: 100%; /* Keeps the image proportions intact */
     object-fit: contain; /* Prevents images from being cropped */
 }
 
