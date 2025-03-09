@@ -209,7 +209,7 @@ nav ul li a:hover {
 .carousel {
     position: relative;
     overflow: hidden;
-    width: 100%;
+    width: 1900px;
     margin: auto;
     max-width: 1900px; /* Optional maximum width for responsiveness */
     height: 500px; /* Set a fixed height for the carousel */
