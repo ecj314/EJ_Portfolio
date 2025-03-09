@@ -35,6 +35,7 @@ nav {
 
 header img {
     order: 2; /* Ensures the image comes after the navigation */
+    width: 50px;
 }
 
 
@@ -210,9 +211,9 @@ nav ul li a:hover {
 .carousel {
     position: relative;
     overflow: hidden;
-    width: 1400px;
+    width: 900px;
     margin: auto;
-    max-width: 1400px; /* Optional maximum width for responsiveness */
+    max-width: 900px; /* Optional maximum width for responsiveness */
     height: 500px; /* Set a fixed height for the carousel */
     border: 2px solid #ddd; /* Optional border for visual effect */
     border-radius: 10px;
