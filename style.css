@@ -371,6 +371,7 @@ footer {
     animation: ticker-scroll 20s linear infinite; /* Slowed down animation */
     white-space: nowrap;
     padding-right: 100%; /* Ensures there is enough space for seamless scroll */
+    will-change: transform;
 
 }
 
@@ -381,10 +382,10 @@ footer {
 
 @keyframes ticker-scroll {
     from {
-        transform: translateX(0); /* Starts at full position */
+        transform: translateX(100%); /* Start off-screen to the right */
     }
     to {
-        transform: translateX(-100%); /* Moves text out completely to the left */
+        transform: translateX(-100%); /* Move fully left */
     }
 }
 
