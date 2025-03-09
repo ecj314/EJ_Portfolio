@@ -179,31 +179,35 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // JavaScript for the Carousel Functionality
-document.addEventListener("DOMContentLoaded", function() {
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
+document.addEventListener("DOMContentLoaded", function () {
+    let currentIndex = 0;
+    const slides = document.querySelectorAll(".carousel-slide");
+    const prevButton = document.querySelector(".prev");
+    const nextButton = document.querySelector(".next");
 
     function showSlide(index) {
-        if (index < 0) currentSlide = slides.length - 1;
-        if (index >= slides.length) currentSlide = 0;
+        // Ensure the index wraps around
+        currentIndex = (index + slides.length) % slides.length;
 
-        slides.forEach(slide => slide.classList.remove('active'));
-        slides[currentSlide].classList.add('active');
+        // Remove "active" from all slides and add it to the current one
+        slides.forEach((slide, idx) => {
+            slide.classList.remove("active");
+            if (idx === currentIndex) {
+                slide.classList.add("active");
+            }
+        });
     }
 
-    showSlide(currentSlide);
-
-    prevButton.addEventListener('click', () => {
-        console.log('Prev button clicked');
-        currentSlide--;
-        showSlide(currentSlide);
+    // Event listeners for navigation buttons
+    prevButton.addEventListener("click", () => {
+        showSlide(currentIndex - 1);
     });
 
-    nextButton.addEventListener('click', () => {
-        console.log('Next button clicked');
-        currentSlide++;
-        showSlide(currentSlide);
+    nextButton.addEventListener("click", () => {
+        showSlide(currentIndex + 1);
     });
+
+    // Initialize the first slide
+    showSlide(currentIndex);
 });
+

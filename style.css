@@ -206,48 +206,52 @@ nav ul li a:hover {
     overflow: visible;
 }
 
-/* Carousel */
 .carousel {
     position: relative;
-    width: 80%;
-    margin: auto;
     overflow: hidden;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
 }
 
 .carousel-container {
-    position: relative;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
     width: 100%;
-    max-width: 600px; /* Adjust as needed */
-    height: 400px; /* Set a fixed height */
-    overflow: hidden;
 }
 
 .carousel-slide {
-    width: 100%;
-    height: auto;
-    display: none;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out;
+    flex: 0 0 100%;
+    display: none; /* Hide slides by default */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
-
-
-.carousel-slide:first-child {
-    display: block;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 100%; /* Ensure it fills the container */
-    object-fit: cover; /* Prevent distortion */
-    display: block;
-}
-
 
 .carousel-slide.active {
-    opacity: 1;
-    visibility: visible;
+    display: flex; /* Show only the active slide */
 }
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+
 
 .prev, .next {
     position: absolute;
