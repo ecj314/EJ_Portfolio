@@ -374,15 +374,19 @@ footer {
 
 }
 
-@keyframes ticker-scroll {
-    0% {
-        transform: translateX(0); /* Start at the beginning */
-    }
-    100% {
-        transform: translateX(-100%); /* Move completely out to the left */
-    }
+.ticker span {
+    display: inline-block; /* Treats each text piece as inline */
+    padding-right: 30px; /* Space between repeats */
 }
 
+@keyframes ticker-scroll {
+    from {
+        transform: translateX(0); /* Starts at full position */
+    }
+    to {
+        transform: translateX(-100%); /* Moves text out completely to the left */
+    }
+}
 
 /* Dark Mode Toggle Button */
 .toggle-btn {
