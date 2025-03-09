@@ -300,6 +300,11 @@ button.next {
     margin-bottom: 20px;
 }
 
+#contact p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 #contact label {
     font-size: 16px;
     margin-bottom: 8px;
