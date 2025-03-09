@@ -381,7 +381,7 @@ footer {
 
 .ticker-wrapper .ticker::after {
     content: attr(data-text); /* Repeats the text */
-    padding-left: 30px; /* Space between loops */
+    padding-left: 1000px; /* Space between loops */
 }
 
 @keyframes ticker-scroll {
