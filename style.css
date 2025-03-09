@@ -371,6 +371,8 @@ footer {
     display: inline-block;
     animation: ticker-scroll 20s linear infinite; /* Slowed down animation */
     white-space: nowrap;
+    padding-right: 100%; /* Ensures there is enough space for seamless scroll */
+
 }
 
 @keyframes ticker-scroll {
