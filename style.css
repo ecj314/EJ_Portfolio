@@ -211,7 +211,7 @@ nav ul li a:hover {
     overflow: hidden;
     width: 100%;
     margin: auto;
-    max-width: 900px; /* Optional maximum width for responsiveness */
+    max-width: 1900px; /* Optional maximum width for responsiveness */
     height: 500px; /* Set a fixed height for the carousel */
     border: 2px solid #ddd; /* Optional border for visual effect */
     border-radius: 10px;
