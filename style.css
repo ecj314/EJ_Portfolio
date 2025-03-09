@@ -233,6 +233,7 @@ nav ul li a:hover {
     text-align: center;
     height: 100%; /* Match the carousel height */
     overflow: hidden; /* Ensures content doesn't spill out */
+    flex-direction: column;
 }
 
 .carousel-slide img {
