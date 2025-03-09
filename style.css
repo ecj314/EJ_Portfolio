@@ -377,6 +377,9 @@ footer {
     0% {
         transform: translateX(0); /* Start at the beginning */
     }
+    100% {
+        transform: translateX(-100%); /* Move completely out to the left */
+    }
 }
 
 
