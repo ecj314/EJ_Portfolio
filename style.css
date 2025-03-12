@@ -29,10 +29,7 @@ header {
     margin: 0;
 }
 
-.header img{
 
-    width: 50px;
-}
 
 nav {
     display: flex;
@@ -57,6 +54,11 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #887561;
+}
+
+nav img{
+
+    width: 50px;
 }
 
 /* Hamburger Menu for Mobile */
