@@ -294,22 +294,26 @@ button.next {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Playfair Display', serif !important;
 }
 
 #contact h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-family: 'Playfair Display', serif !important;
 }
 
 #contact p {
     text-align: center;
     margin-bottom: 20px;
+    font-family: 'Playfair Display', serif !important;
 }
 
 #contact label {
     font-size: 16px;
     margin-bottom: 8px;
     display: block;
+    font-family: 'Playfair Display', serif !important;
 }
 
 #contact input,
