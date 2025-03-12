@@ -321,6 +321,7 @@ button.next {
     border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
+    font-family: 'Playfair Display', serif !important;
 }
 
 #contact button {
