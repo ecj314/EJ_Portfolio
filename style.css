@@ -18,7 +18,7 @@ body {
 header {
     background: #635344;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,14 +30,8 @@ header {
 }
 
 nav {
-    order: 1; /* Ensures the navigation comes before the image */
+    display: flex;
 }
-
-header img {
-    order: 2; /* Ensures the image comes after the navigation */
-    width: 50px;
-}
-
 
 nav ul {
     list-style: none;
@@ -46,7 +40,7 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 20px;
+    margin: 0 15px;
 }
 
 nav ul li a {
@@ -54,132 +48,100 @@ nav ul li a {
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s ease;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-nav img {
-    width: 50px;
-    height: auto;
 }
 
 nav ul li a:hover {
     color: #887561;
 }
 
-.logo {
-    width: 80px;
-    height: auto;
-    position: absolute;
-    top: 10px;
-    right: 20px;
+/* Hamburger Menu for Mobile */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #635344;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
 }
 
 /* Hero Section */
 #hero {
-    color: #f4f4f4;
-    padding: 100px 20px;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 50px;
+    padding: 80px 20px;
     background-color: #635344;
-}
-
-#hero::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
+    color: #f4f4f4;
+    flex-wrap: wrap;
 }
 
 .hero-content {
     max-width: 50%;
-    text-align: justify;
-    position: relative;
-    z-index: 1;
+    text-align: left;
 }
 
 .hero-image {
     width: 300px;
     height: auto;
     border-radius: 10px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out;
 }
 
 .hero-image:hover {
     transform: translateY(-10px);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-#hero h2 {
-    font-size: 48px;
-}
+@media (max-width: 768px) {
+    #hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+    }
 
-#hero p {
-    font-size: 20px;
-    margin: 10px 0;
-    color: #f4f4f4;
-}
+    .hero-content {
+        max-width: 100%;
+    }
 
-.hero-list {
-    list-style-type: none; /* Removes default bullets */
-    padding: 0;
-    margin: 0; /* Ensure no extra space */
-}
-
-.hero-list li {
-    display: flex;
-    align-items: center;
-    padding-left: 0; /* Remove any extra padding */
-}
-
-
-/* Button */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #635344;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-    position: relative;
-    z-index: 2;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #887561;
+    .hero-image {
+        max-width: 80%;
+    }
 }
 
 /* Portfolio Section */
 #portfolio {
     padding: 50px 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
-#portfolio h2 {
-    text-align: center;
-    position: relative;
-    z-index: 10;
-    padding: 5px;
-    display: inline-block;
-}
-
 .portfolio-item {
-    position: relative;
     padding: 20px;
     border-radius: 12px;
     text-align: center;
@@ -189,68 +151,51 @@ nav ul li a:hover {
 
 .portfolio-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .portfolio-item img {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
     border-radius: 10px;
-    display: block;
-    margin: 0 auto;
 }
 
-.portfolio-item .carousel-container {
-    width: 100%;
-    height: auto;
-    grid-column: span 2;
-    padding: 0;
-    overflow: visible;
-}
-
+/* Carousel */
 .carousel {
     position: relative;
     overflow: hidden;
-    width: auto;
+    max-width: 900px;
     margin: auto;
-    max-width: 900px; /* Optional maximum width for responsiveness */
-    height: auto; /* Set a fixed height for the carousel */
-    border: 2px solid #ddd; /* Optional border for visual effect */
     border-radius: 10px;
 }
 
 .carousel-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    height: 100%;
 }
 
 .carousel-slide {
     flex: 0 0 100%;
-    display: none; /* Hide slides by default */
+    display: none;
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 100%; /* Match the carousel height */
-    overflow: hidden; /* Ensures content doesn't spill out */
-    flex-direction: column;
 }
 
 .carousel-slide img {
-    max-width: 100%; /* Scales the image to fit horizontally */
-    height: 100%; /* Keeps the image proportions intact */
-    object-fit: contain; /* Prevents images from being cropped */
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 .carousel-slide.active {
-    display: flex; /* Show only the active slide */
+    display: flex;
 }
 
 button.prev, button.next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: #333;
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
     padding: 10px;
@@ -266,27 +211,7 @@ button.next {
     right: 10px;
 }
 
-
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
-/* Contact Section */
+/* Contact Form */
 #contact form {
     max-width: 600px;
     margin: auto;
@@ -296,54 +221,15 @@ button.next {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-#contact h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-#contact p {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-#contact label {
-    font-size: 16px;
-    margin-bottom: 8px;
-    display: block;
-}
-
-#contact input,
-#contact textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-#contact button {
-    background-color: #635344;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    font-family: 'Playfair Display', serif !important;
-}
-
-#contact button:hover {
-    background: #887561;
+@media (max-width: 768px) {
+    #contact form {
+        max-width: 100%;
+        padding: 15px;
+    }
 }
 
 /* Footer */
 footer {
-    position: relative;
-    width: 100%;
-    bottom: 0;
     background: #635344;
     color: white;
     padding: 20px;
@@ -351,10 +237,11 @@ footer {
     text-align: center;
 }
 
+/* Moving Banner */
 .ticker-wrapper {
     width: 100%;
     overflow: hidden;
-    background: #635344; /* Footer background */
+    background: #635344;
     color: white;
     font-size: 18px;
     white-space: nowrap;
@@ -368,28 +255,21 @@ footer {
 
 .ticker {
     display: flex;
-    animation: ticker-scroll 20s linear infinite; /* Slowed down animation */
+    animation: ticker-scroll 20s linear infinite;
     white-space: nowrap;
-    min-width: 100%;
-
 }
 
 .ticker span {
-    display: inline-block; /* Treats each text piece as inline */
-    padding-right: 30px; /* Space between repeats */
-}
-
-.ticker-wrapper .ticker::after {
-    content: attr(data-text); /* Repeats the text */
-    padding-left: 1000px; /* Space between loops */
+    display: inline-block;
+    padding-right: 30px;
 }
 
 @keyframes ticker-scroll {
     from {
-        transform: translateX(100%); /* Start off-screen to the right */
+        transform: translateX(100%);
     }
     to {
-        transform: translateX(-100%); /* Move fully left */
+        transform: translateX(-100%);
     }
 }
 
