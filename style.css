@@ -246,6 +246,12 @@ nav ul li a:hover {
     display: flex; /* Show only the active slide */
 }
 
+#portfolio-2 h2{
+    padding: 10px;
+    justify-content: center;
+
+}
+
 button.prev, button.next {
     position: absolute;
     top: 50%;
