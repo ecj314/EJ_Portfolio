@@ -249,6 +249,13 @@ nav ul li a:hover {
     position: relative;
 }
 
+.carousel-slide h3,
+.carousel-slide p {
+    width: 90%; /* Prevents text from being too wide */
+    margin-top: 10px; /* Adds spacing below animation */
+    word-wrap: break-word; /* Ensures long words don’t overflow */
+}
+
 #portfolio-2 h2{
     padding: 10px;
     align-items: center;
