@@ -261,6 +261,21 @@ nav ul li a:hover {
     text-align: center;
 }
 
+@media screen and (max-width: 600px) {
+    #llm-animation {
+        max-width: 100%; /* Scale animation to fit screen width */
+        height: 200px; /* Reduce height */
+    }
+
+    .carousel-slide h3 {
+        font-size: 1.2rem;
+    }
+
+    .carousel-slide p {
+        font-size: 0.9rem;
+    }
+}
+
 #portfolio-2 h2{
     padding: 10px;
     align-items: center;
