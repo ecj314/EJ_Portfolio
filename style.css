@@ -229,7 +229,8 @@ nav ul li a:hover {
     display: none;
     flex-direction: column; /* Stacks items vertically */
     align-items: center; /* Center-align content */
-    justify-content: center; /* Align content to the top */
+    justify-content: space-between; /* Align content to the top */
+    min-height: 600px
     height: 100%; /* Matches the carousel height */
     overflow: hidden; /* Prevent items from overflowing */
     padding: 20px; /* Adds spacing to avoid edge clipping */
