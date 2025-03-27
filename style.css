@@ -239,8 +239,8 @@ nav ul li a:hover {
 }
 
 .carousel-slide img {
-    max-width: 100%; /* Scales the image to fit horizontally */
-    height: 100%; /* Keeps the image proportions intact */
+    max-width: 80%; /* Scales the image to fit horizontally */
+    height: 80%; /* Keeps the image proportions intact */
     object-fit: contain; /* Prevents images from being cropped */
 }
 
