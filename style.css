@@ -214,7 +214,7 @@ nav ul li a:hover {
     width: auto;
     margin: auto;
     max-width: 700px; /* Optional maximum width for responsiveness */
-    height: 500px; /* Set a fixed height for the carousel */
+    height: 700px; /* Set a fixed height for the carousel */
     border: 2px solid #ddd; /* Optional border for visual effect */
     border-radius: 10px;
 }
@@ -222,7 +222,7 @@ nav ul li a:hover {
 .carousel-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    height: 600px;
+    height: 700px;
     width: 100%;
     position: relative;
 }
@@ -246,6 +246,7 @@ nav ul li a:hover {
 
 .carousel-slide.active {
     display: flex; /* Show only the active slide */
+    position: relative;
 }
 
 #portfolio-2 h2{
