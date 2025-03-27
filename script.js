@@ -60,33 +60,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ========== LOTTIE ANIMATION ========== //
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Lottie animation section loaded");  // Debugging line
-    const animationContainer = document.getElementById("coding-animation");
+    console.log("Lottie animations initializing..."); // Debugging
 
-    if (!animationContainer) {
-        console.error("❌ ERROR: Lottie animation container not found! Ensure you have <div id='coding-animation'></div> in your HTML.");
-        return;
+    // Function to load a Lottie animation
+    function loadLottieAnimation(containerId, jsonPath) {
+        const container = document.getElementById(containerId);
+
+        if (!container) {
+            console.error(`❌ ERROR: Lottie animation container '${containerId}' not found!`);
+            return;
+        }
+
+        const animation = lottie.loadAnimation({
+            container: container,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: jsonPath,
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        });
+
+        animation.addEventListener("data_failed", function () {
+            console.error(`❌ ERROR: Failed to load Lottie animation from ${jsonPath}`);
+        });
+
+        animation.addEventListener("DOMLoaded", function () {
+            console.log(`✅ Animation '${containerId}' loaded successfully!`);
+        });
     }
 
-    const animation = lottie.loadAnimation({
-        container: animationContainer,
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        path: "https://cdn.jsdelivr.net/gh/ecj314/EJ_Portfolio/Website_Files/Coding%20animation.json",
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice'
-        }
-    });
+    // Load the "Building This Website" animation
+    loadLottieAnimation("coding-animation", "https://cdn.jsdelivr.net/gh/ecj314/EJ_Portfolio/Website_Files/Coding%20animation.json");
 
-    animation.addEventListener("data_failed", function () {
-        console.error("❌ ERROR: Animation failed to load! Check JSON URL and format.");
-    });
-
-    animation.addEventListener("DOMLoaded", function () {
-        console.log("✅ Animation successfully loaded!");
-    });
+    // Load the "Stock Market LLM Tool" animation
+    loadLottieAnimation("llm-animation", "https://cdn.jsdelivr.net/gh/ecj314/EJ_Portfolio/Website_Files/LLM-Animation.json");
 });
+
 
 // JavaScript for the Carousel Functionality
 document.addEventListener("DOMContentLoaded", function () {
