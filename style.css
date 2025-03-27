@@ -226,7 +226,7 @@ nav ul li a:hover {
 }
 
 .carousel-slide {
-    display: flex;
+    display: none;
     flex-direction: column; /* Stacks items vertically */
     align-items: center; /* Center-align content */
     justify-content: flex-start; /* Align content to the top */
