@@ -121,3 +121,16 @@ document.addEventListener("DOMContentLoaded", function () {
     showSlide(currentIndex);
 });
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".carousel-slide");
+
+    slides.forEach((slide) => {
+        let player = slide.querySelector("lottie-player");
+        if (player) {
+            slide.addEventListener("transitionstart", () => {
+                player.play(); // Restart animation when slide appears
+            });
+        }
+    });
+});
