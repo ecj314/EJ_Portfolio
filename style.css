@@ -213,7 +213,7 @@ nav ul li a:hover {
     overflow: hidden; /* Ensures slides stay within the container */
     width: 100%;
     margin: auto;
-    max-width: 500px; /* Optional, for responsiveness */
+    max-width: 800px; /* Optional, for responsiveness */
     height: 600px; /* Fixed or adaptable height */
 }
 
@@ -232,6 +232,7 @@ nav ul li a:hover {
     align-items: center;
     text-align: center;
     height: 100%; /* Match carousel height */
+    width: 100%
     overflow: hidden; /* Ensures no content spills out */
 }
 
