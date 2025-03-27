@@ -266,6 +266,14 @@ nav ul li a:hover {
 
 }
 
+.carousel .prev {
+    left: 10px; /* Align to the left inside carousel */
+}
+
+.carousel .next {
+    right: 10px; /* Align to the right inside carousel */
+}
+
 button.prev, button.next {
     position: absolute;
     top: 50%;
@@ -290,13 +298,7 @@ button.prev, button.next {
     cursor: pointer;
 }
 
-.prev {
-    left: 10px;
-}
 
-.next {
-    right: 10px;
-}
 
 /* Contact Section */
 #contact form {
