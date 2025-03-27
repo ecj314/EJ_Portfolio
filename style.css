@@ -222,7 +222,7 @@ nav ul li a:hover {
 .carousel-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    height: 500px;
+    height: 600px;
     width: 100%;
     position: relative;
 }
